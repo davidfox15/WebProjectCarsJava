@@ -1,4 +1,4 @@
-package tubryansk.lisitsyn.cars.controllers;
+package tubryansk.lisitsyn.cars.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +15,5 @@ public class MainController {
     @GetMapping("/catalog")
     public String catalog(Model model) {
         return "catalog";
-    }
-    @GetMapping("/login")
-    public String login (Model model) {
-        return "login";
     }
 }
