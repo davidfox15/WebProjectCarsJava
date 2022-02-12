@@ -3,6 +3,5 @@
 
 <@c.page title="Login">
     <h1>Login</h1>
-<@l.login path="/login"/>
-    <a href="/registration">Registration</a>
+    <@l.login path="/registration"/>
 </@c.page>
