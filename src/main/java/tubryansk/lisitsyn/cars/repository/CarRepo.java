@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CarRepo extends JpaRepository<Car,Long> {
     List<Car> findByModel(String model);
+    Car findById(Integer id);
 }

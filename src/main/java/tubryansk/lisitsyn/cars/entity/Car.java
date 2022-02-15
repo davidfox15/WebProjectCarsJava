@@ -1,31 +1,51 @@
 package tubryansk.lisitsyn.cars.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
-import java.util.Stack;
+import javax.persistence.*;
 
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String brand;
-    private String model;
     private Integer year;
+    private Integer run;
+    private Integer engineHp;
+    private Float engineVolume;
+    @Enumerated(EnumType.STRING)
+    private CarBrand brand;
+    @Enumerated(EnumType.STRING)
+    private CarDrive drive;
+    @Enumerated(EnumType.STRING)
+    private CarTransmission transmission;
+    @Enumerated(EnumType.STRING)
+    private CarWheel wheel;
+    @Enumerated(EnumType.STRING)
+    private CarEngineType engineType;
+    @Enumerated(EnumType.STRING)
+    private CarBody body;
+    private String model;
     private String imageName;
     private String date;
+    private String color;
+    private String comment;
 
-    public Car() {
+    public Car(Integer year, Integer run, Integer engineHp, Float engineVolume, CarBrand brand, CarDrive drive, CarTransmission transmission, CarWheel wheel, CarEngineType engineType, CarBody body, String model, String date, String color) {
+        this.year = year;
+        this.run = run;
+        this.engineHp = engineHp;
+        this.engineVolume = engineVolume;
+        this.brand = brand;
+        this.drive = drive;
+        this.transmission = transmission;
+        this.wheel = wheel;
+        this.engineType = engineType;
+        this.body = body;
+        this.model = model;
+        this.date = date;
+        this.color = color;
     }
 
-    public Car(String brand, String model, Integer year, String date) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.date = date;
+    public Car() {
     }
 
     public Integer getId() {
@@ -36,12 +56,84 @@ public class Car {
         this.id = id;
     }
 
-    public String getBrand() {
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getRun() {
+        return run;
+    }
+
+    public void setRun(Integer run) {
+        this.run = run;
+    }
+
+    public Integer getEngineHp() {
+        return engineHp;
+    }
+
+    public void setEngineHp(Integer engineHp) {
+        this.engineHp = engineHp;
+    }
+
+    public Float getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(Float engineVolume) {
+        this.engineVolume = engineVolume;
+    }
+
+    public CarBrand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(CarBrand brand) {
         this.brand = brand;
+    }
+
+    public CarDrive getDrive() {
+        return drive;
+    }
+
+    public void setDrive(CarDrive drive) {
+        this.drive = drive;
+    }
+
+    public CarTransmission getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(CarTransmission transmission) {
+        this.transmission = transmission;
+    }
+
+    public CarWheel getWheel() {
+        return wheel;
+    }
+
+    public void setWheel(CarWheel wheel) {
+        this.wheel = wheel;
+    }
+
+    public CarEngineType getEngineType() {
+        return engineType;
+    }
+
+    public void setEngineType(CarEngineType engineType) {
+        this.engineType = engineType;
+    }
+
+    public CarBody getBody() {
+        return body;
+    }
+
+    public void setBody(CarBody body) {
+        this.body = body;
     }
 
     public String getModel() {
@@ -52,20 +144,12 @@ public class Car {
         this.model = model;
     }
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
     public String getImageName() {
         return imageName;
     }
 
-    public void setImageName(String image) {
-        this.imageName = image;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getDate() {
@@ -75,18 +159,20 @@ public class Car {
     public void setDate(String date) {
         this.date = date;
     }
-    //    private Integer run;
-//    private String body;
-//    private String color;
-//    private String engineType;
-//    private Integer engineVolume;
-//    private Integer engineHp;
-//    private String equipment;
-//    private String drive;
-//    private String gear;
-//    private String wheel;
-//    private String condition;
-//    private Integer numberOfOwners;
-//    private String image;
-//    private String comment;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

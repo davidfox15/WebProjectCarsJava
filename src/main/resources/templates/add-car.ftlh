@@ -8,28 +8,71 @@
     <div class="car-info">
         <form action="add-car" enctype="multipart/form-data" method="post">
             <ul class="car-list">
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                <li><span>Марка</span><input class="spec-input input" type="text" name="brand"/></li>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <li><span>Марка</span>
+                    <select name="brand" id="brand">
+                        <#list CarBrand as brand>
+                            <option value="${brand}">${brand}</option>
+                        </#list>
+                    </select>
+                </li>
                 <li><span>Модель</span><input class="spec-input input" type="text" name="carModel"/></li>
-                <li><span>Год выпуска</span><input class="spec-input input" type="number" name="year"/></li>
-<#--                <li><span>Цена</span><input class="spec-input input" type="number" name="price"/></li>-->
-<#--                <li><span>Пробег</span><input class="spec-input input" type="text" name="run"/></li>-->
-<#--                <li><span>Кузов</span><input class="spec-input input" type="text" name="body"/></li>-->
-<#--                <li><span>Цвет</span><input class="spec-input input" type="text" name="color"/></li>-->
-<#--                <li><span>Тип Двигаетль</span><input class="spec-input input" type="text" name="engineType"/></li>-->
-<#--                <li><span>Обьем Двигаетля</span><input class="spec-input input" type="number" name="engineVolume"/></li>-->
-<#--                <li><span>Лошадиные силы</span><input class="spec-input input" type="number" name="engineHp"/></li>-->
-<#--                <li><span>Комплектация</span><input class="spec-input input" type="number" name="equipment"/></li>-->
-<#--                <li><span>Коробка</span><input class="spec-input input" type="text" name="gear"/></li>-->
-<#--                <li><span>Привод</span><input class="spec-input input" type="text" name="drive"/></li>-->
-<#--                <li><span>Руль</span><input class="spec-input input" type="text" name="wheel"/></li>-->
-<#--                <li><span>Состояние</span><input class="spec-input input" type="text" name="condition"/></li>-->
-<#--                <li><span>Владельцы</span><input class="spec-input input" type="number" name="numberOfOwners"/></li>-->
+                <li><span>Год выпуска</span><input class="spec-input input" type="number" name="year" min="1900"
+                                                   max="2022"/></li>
+                <li><span>Цена</span><input class="spec-input input" type="number" name="price" min="0" max="90000000"/>
+                </li>
+                <li><span>Пробег</span><input class="spec-input input" type="number" name="run" min="0" max="1000000"/>
+                </li>
+                <li>
+                    <span>Кузов</span>
+                    <select name="body" id="body">
+                        <#list CarBody as body>
+                            <option value="${body}">${body}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li><span>Цвет</span><input class="spec-input input" type="text" name="color"/></li>
+                <li>
+                    <span>Тип Двигаетль</span>
+                    <select name="engineType" id="engineType">
+                        <#list CarEngineType as engineType>
+                            <option value="${engineType}">${engineType}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li><span>Обьем Двигаетля</span><input class="spec-input input" type="number" name="engineVolume"
+                                                       min="0" max="10"/></li>
+                <li><span>Лошадиные силы</span><input class="spec-input input" type="number" name="engineHp" min="0"
+                                                      max="9000"/></li>
+                <li>
+                    <span>Коробка</span>
+                    <select name="transmission" id="transmission">
+                        <#list CarTransmission as transmission>
+                            <option value="${transmission}">${transmission}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li>
+                    <span>Привод</span>
+                    <select name="drive" id="drive">
+                        <#list CarDrive as drive>
+                            <option value="${drive}">${drive}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li>
+                    <span>Руль</span>
+                    <select name="wheel" id="wheel">
+                        <#list CarWheel as wheel>
+                            <option value="${wheel}">${wheel}</option>
+                        </#list>
+                    </select>
+                </li>
                 <li><span>Загрузить изображение</span><input class="input" type="file" name="file"/></li>
-<#--                <li>-->
-<#--                    <h2>Комментарий</h2>-->
-<#--                    <textarea name="comment" id="comment" cols="100" rows="10"></textarea>-->
-<#--                </li>-->
+                <li>
+                    <h2>Комментарий</h2>
+                    <textarea name="comment" id="comment" cols="100" rows="10"></textarea>
+                </li>
             </ul>
             <input class="btn" type="submit" value="Добавить машину"/>
         </form>
