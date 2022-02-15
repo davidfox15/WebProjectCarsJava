@@ -36,9 +36,6 @@ public class MainController {
     @GetMapping("/catalog")
     public String catalog(Model model) {
         Iterable<Car> cars = carRepo.findAll();
-        for (Car car : cars) {
-            System.out.println(car.getImageName());
-        }
         model.addAttribute("cars", cars);
         return "catalog";
     }
@@ -46,7 +43,10 @@ public class MainController {
     @PostMapping("/delete")
     public String catalog(Model model, Integer id) {
         Car carFromDb = carRepo.findById(id);
-        //ADD FILE DELETE
+        // File delete With row in DB
+        File fileToDelete = new File(uploadPath + "/" + carFromDb.getImageName());
+        boolean success = fileToDelete.delete();
+        //if(success) System.out.println("DELETED!");
         carRepo.delete(carFromDb);
         Iterable<Car> cars = carRepo.findAll();
         model.addAttribute("cars", cars);
@@ -111,7 +111,7 @@ public class MainController {
             }
             String uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
-            file.transferTo(new File(uploadDir.getPath() + "/" + resultFileName));
+            file.transferTo(new File(uploadPath + "/" + resultFileName));
             car.setImageName(resultFileName);
         }
 
