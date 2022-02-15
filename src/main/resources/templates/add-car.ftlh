@@ -16,12 +16,12 @@
                         </#list>
                     </select>
                 </li>
-                <li><span>Модель</span><input class="spec-input input" type="text" name="carModel"/></li>
-                <li><span>Год выпуска</span><input class="spec-input input" type="number" name="year" min="1900"
+                <li><span>Модель</span><input required class="spec-input input" type="text" name="carModel"/></li>
+                <li><span>Год выпуска</span><input required class="spec-input input" type="number" name="year" min="1900"
                                                    max="2022"/></li>
-                <li><span>Цена</span><input class="spec-input input" type="number" name="price" min="0" max="90000000"/>
+                <li><span>Цена</span><input required class="spec-input input" type="number" name="price" min="0" max="90000000"/>
                 </li>
-                <li><span>Пробег</span><input class="spec-input input" type="number" name="run" min="0" max="1000000"/>
+                <li><span>Пробег</span><input required class="spec-input input" type="number" name="run" min="0" max="1000000"/>
                 </li>
                 <li>
                     <span>Кузов</span>
@@ -31,7 +31,7 @@
                         </#list>
                     </select>
                 </li>
-                <li><span>Цвет</span><input class="spec-input input" type="text" name="color"/></li>
+                <li><span>Цвет</span><input required class="spec-input input" type="text" name="color"/></li>
                 <li>
                     <span>Тип Двигаетль</span>
                     <select name="engineType" id="engineType">
@@ -40,9 +40,9 @@
                         </#list>
                     </select>
                 </li>
-                <li><span>Обьем Двигаетля</span><input class="spec-input input" type="number" name="engineVolume"
+                <li><span>Обьем Двигаетля</span><input required class="spec-input input" type="number" name="engineVolume"
                                                        min="0" max="10"/></li>
-                <li><span>Лошадиные силы</span><input class="spec-input input" type="number" name="engineHp" min="0"
+                <li><span>Лошадиные силы</span><input required class="spec-input input" type="number" name="engineHp" min="0"
                                                       max="9000"/></li>
                 <li>
                     <span>Коробка</span>

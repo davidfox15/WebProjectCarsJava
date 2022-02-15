@@ -65,7 +65,9 @@
                 <td>${car.run}</td>
                 <td>${car.engineType}, ${car.engineVolume}л., ${car.engineHp}л.с.</td>
                 <td>${car.drive}</td>
+                <#if car.imageName??>
                 <td><img src="/img/${car.imageName}" alt="Image"></td>
+                </#if>
                 <td>${car.transmission}</td>
                 <td>${car.wheel}</td>
                 <td>${car.body}</td>
