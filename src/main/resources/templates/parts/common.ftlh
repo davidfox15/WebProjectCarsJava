@@ -22,10 +22,10 @@
                 <img src="/static/car-logo.svg" alt="Cars Market" class="logo"/>
             </a>
             <div class="search">
-                    <input type="text" name="" class="input input-search" placeholder=""/>
-                    <button class="button" id="search-button">
-                        <span>Поиск</span>
-                    </button>
+                <input type="text" name="" class="input input-search" placeholder=""/>
+                <button class="button" id="search-button">
+                    <span>Поиск</span>
+                </button>
             </div>
             <form action="/login">
                 <button class="button button-primary" name="">
@@ -34,5 +34,16 @@
                 </button>
             </form>
         </header>
+    </div>
+</#macro>
+
+<#macro menu>
+    <div class="container">
+        <div class="menu">
+            <a href="/">Главная страница</a>
+            <a href="/catalog">Каталог</a>
+            <a href="/about">О нас</a>
+        </div>
+        <hr class="underline"/>
     </div>
 </#macro>

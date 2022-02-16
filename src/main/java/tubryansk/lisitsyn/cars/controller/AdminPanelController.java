@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import tubryansk.lisitsyn.cars.entity.*;
@@ -18,22 +19,23 @@ import java.util.Date;
 import java.util.UUID;
 
 @Controller
-public class AdminController {
+@RequestMapping("/adminpanel")
+public class AdminPanelController {
     @Autowired
     private CarRepo carRepo;
 
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/admin-catalog")
+    @GetMapping("/catalog")
     public String catalog(Model model) {
         Iterable<Car> cars = carRepo.findAll();
         model.addAttribute("cars", cars);
-        return "admin-catalog";
+        return "ap-catalog";
     }
 
     @PostMapping("/delete")
-    public String catalog(Model model, Integer id) {
+    public String deleteCarFromDB(Model model, Integer id) {
         Car carFromDb = carRepo.findById(id);
         // delete image with record from database
         File fileToDelete = new File(uploadPath + "/" + carFromDb.getImageName());
@@ -42,22 +44,22 @@ public class AdminController {
         carRepo.delete(carFromDb);
         Iterable<Car> cars = carRepo.findAll();
         model.addAttribute("cars", cars);
-        return "redirect:/catalog";
+        return "redirect:/adminpanel/catalog";
     }
 
-    @GetMapping("/admin-add")
-    public String add(Model model) {
+    @GetMapping("/add")
+    public String addCarForm(Model model) {
         model.addAttribute("CarBrand", Arrays.asList(CarBrand.values()));
         model.addAttribute("CarEngineType", Arrays.asList(CarEngineType.values()));
         model.addAttribute("CarDrive", Arrays.asList(CarDrive.values()));
         model.addAttribute("CarWheel", Arrays.asList(CarWheel.values()));
         model.addAttribute("CarTransmission", Arrays.asList(CarTransmission.values()));
         model.addAttribute("CarBody", Arrays.asList(CarBody.values()));
-        return "admin-add";
+        return "ap-add";
     }
 
-    @PostMapping("/admin-add")
-    public String add(Model model,
+    @PostMapping("/add")
+    public String saveCarToDB(Model model,
                       @RequestParam(name = "year") Integer year,
                       @RequestParam(name = "run") Integer run,
                       @RequestParam(name = "engineHp") Integer engineHp,
@@ -107,6 +109,6 @@ public class AdminController {
         }
 
         carRepo.save(car);
-        return "redirect:/catalog";
+        return "redirect:/adminpanel/catalog";
     }
 }

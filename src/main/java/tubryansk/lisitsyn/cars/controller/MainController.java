@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import tubryansk.lisitsyn.cars.entity.*;
 import tubryansk.lisitsyn.cars.repository.CarRepo;
@@ -25,6 +26,18 @@ public class MainController {
         Iterable<Car> cars = carRepo.findAll();
         model.addAttribute("cars", cars);
         return "catalog";
+    }
+
+    @GetMapping("/about")
+    public String about(Model model) {
+        return "about";
+    }
+
+    @GetMapping("/catalog/{car}")
+    public String carPage(Model model, @PathVariable Integer car) {
+        Car carFromDb = carRepo.findById(car);
+        model.addAttribute("car", carFromDb);
+        return "car";
     }
 
 //    @PostMapping("/search")

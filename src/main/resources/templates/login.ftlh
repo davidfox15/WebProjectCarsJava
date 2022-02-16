@@ -3,7 +3,10 @@
 
 <@c.page title="Login">
     <@c.header/>
-    <h1>Login</h1>
-<@l.login path="/login"/>
-    <a href="/registration">Registration</a>
+    <@c.menu/>
+    <div class="container">
+        <h1>Login</h1>
+        <@l.login path="/login"/>
+        <a href="/registration">Registration</a>
+    </div>
 </@c.page>

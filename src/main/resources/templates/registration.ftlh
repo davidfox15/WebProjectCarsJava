@@ -3,6 +3,8 @@
 
 <@c.page title="Login">
     <@c.header/>
+    <@c.menu/>
+
     <h1>Login</h1>
     <@l.login path="/registration"/>
 </@c.page>

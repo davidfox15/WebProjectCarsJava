@@ -1,19 +1,13 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page title="Login">
-    <!-- Header  -->
     <@c.header/>
+    <@c.menu/>
+
     <div class="container">
-        <!-- Navigation anf Filter -->
-        <div class="menu">
-            <a href="/main">Главная страница</a>
-            <a href="/catalog">Каталог</a>
-            <a href="/info">О нас</a>
-        </div>
-        <hr class="underline"/>
         <!-- Catalog -->
         <#list cars as car>
-        <a class="card" href="">
+        <a class="card" href="catalog/${car.id}">
             <#if car.imageName??>
                 <img class="card-img" src="/img/${car.imageName}" alt="Image">
             </#if>
@@ -32,7 +26,7 @@
                 </div>
             </div>
             <div class="card-info">
-                <h2 class="text-center">${car.year}</h2>
+                <h2 class="text-center">${car.year?string.computer}</h2>
                 <div class="text-center">Новая</div>
             </div>
         </a>

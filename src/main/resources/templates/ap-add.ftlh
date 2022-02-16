@@ -1,12 +1,14 @@
 <#import "parts/common.ftlh" as c />
 <#import "parts/login.ftlh" as l>
 <@c.page title="Add Car">
+    <@c.menu/>
     <@l.logout/>
+
     <div>
-        <a href="/catalog">Catalog</a>
+        <a href="/adminpanel/catalog">Catalog</a>
     </div>
     <div class="car-info">
-        <form action="/admin-add" enctype="multipart/form-data" method="post">
+        <form action="/adminpanel/add" enctype="multipart/form-data" method="post">
             <ul class="car-list">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <li><span>Марка</span>

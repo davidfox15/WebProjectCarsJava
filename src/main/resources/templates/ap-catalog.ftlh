@@ -1,10 +1,11 @@
 <#import "parts/common.ftlh" as c>
 <#import "parts/login.ftlh" as l>
 <@c.page title="Catalog">
-    HI MY NAYBORS
+    <@c.menu/>
     <@l.logout/>
+
     <div>
-        <a href="/add-car">ADD</a>
+        <a href="/adminpanel/add">ADD</a>
     </div>
     Catalog
     <div class="car-info">
@@ -22,8 +23,8 @@
                 <th>Коробка</th>
                 <th>Руль</th>
                 <th>Кузов</th>
-                <th>Картинка</th>
                 <th>Цвет</th>
+                <th>Картинка</th>
                 <th>Комментарий</th>
             </tr>
             </thead>
@@ -33,21 +34,23 @@
                 <td>${car.id}</td>
                 <td>${car.brand}</td>
                 <td>${car.model}</td>
-                <td>${car.year}</td>
+                <td>${car.year?string.computer}</td>
                 <td>${car.date}</td>
                 <td>${car.run}</td>
                 <td>${car.engineType}, ${car.engineVolume}л., ${car.engineHp}л.с.</td>
                 <td>${car.drive}</td>
-                <#if car.imageName??>
-                <td><img src="/img/${car.imageName}" alt="Image"></td>
-                </#if>
                 <td>${car.transmission}</td>
                 <td>${car.wheel}</td>
                 <td>${car.body}</td>
                 <td>${car.color}</td>
+                <td>
+                <#if car.imageName??>
+                    <img class="ap-catalog-img" src="/img/${car.imageName}" alt="Image">
+                </#if>
+                </td>
                 <td>${car.comment}</td>
                 <td>
-                    <form id="${car}" action="/delete" method="POST">
+                    <form id="${car}" action="/adminpanel/delete" method="POST">
                         <input id="id" name="id" type="hidden" value="${car.id}"/>
                         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                         <input class="btn" type="submit" value="Удалить машину"/>
