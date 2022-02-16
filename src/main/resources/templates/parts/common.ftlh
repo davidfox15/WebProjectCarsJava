@@ -27,10 +27,10 @@
                     <span>Поиск</span>
                 </button>
             </div>
-            <form action="/login">
+            <form action="/account">
                 <button class="button button-primary" name="">
                     <img class="button-icon" src="/static/person.svg" alt="person"/>
-                    <span>Войти</span>
+                    <span>Аккаунт</span>
                 </button>
             </form>
         </header>

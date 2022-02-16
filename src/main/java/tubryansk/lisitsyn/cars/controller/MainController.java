@@ -16,8 +16,7 @@ public class MainController {
     private CarRepo carRepo;
 
     @GetMapping("/")
-    public String main(@RequestParam(name = "name", required = false, defaultValue = "David") String name, Model model) {
-        model.addAttribute("name", name);
+    public String main(Model model) {
         return "main";
     }
 
