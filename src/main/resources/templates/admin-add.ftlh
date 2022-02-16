@@ -6,7 +6,7 @@
         <a href="/catalog">Catalog</a>
     </div>
     <div class="car-info">
-        <form action="add-car" enctype="multipart/form-data" method="post">
+        <form action="/admin-add" enctype="multipart/form-data" method="post">
             <ul class="car-list">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <li><span>Марка</span>

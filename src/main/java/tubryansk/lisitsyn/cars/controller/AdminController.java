@@ -25,6 +25,13 @@ public class AdminController {
     @Value("${upload.path}")
     private String uploadPath;
 
+    @GetMapping("/admin-catalog")
+    public String catalog(Model model) {
+        Iterable<Car> cars = carRepo.findAll();
+        model.addAttribute("cars", cars);
+        return "admin-catalog";
+    }
+
     @PostMapping("/delete")
     public String catalog(Model model, Integer id) {
         Car carFromDb = carRepo.findById(id);
@@ -38,7 +45,7 @@ public class AdminController {
         return "redirect:/catalog";
     }
 
-    @GetMapping("/add-car")
+    @GetMapping("/admin-add")
     public String add(Model model) {
         model.addAttribute("CarBrand", Arrays.asList(CarBrand.values()));
         model.addAttribute("CarEngineType", Arrays.asList(CarEngineType.values()));
@@ -46,10 +53,10 @@ public class AdminController {
         model.addAttribute("CarWheel", Arrays.asList(CarWheel.values()));
         model.addAttribute("CarTransmission", Arrays.asList(CarTransmission.values()));
         model.addAttribute("CarBody", Arrays.asList(CarBody.values()));
-        return "add-car";
+        return "admin-add";
     }
 
-    @PostMapping("/add-car")
+    @PostMapping("/admin-add")
     public String add(Model model,
                       @RequestParam(name = "year") Integer year,
                       @RequestParam(name = "run") Integer run,
