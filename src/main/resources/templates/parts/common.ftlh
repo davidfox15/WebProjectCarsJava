@@ -21,12 +21,17 @@
             <a href="/">
                 <img src="/static/car-logo.svg" alt="Cars Market" class="logo"/>
             </a>
-            <div class="search">
-                <input type="text" name="" class="input input-search" placeholder=""/>
-                <button class="button" id="search-button">
-                    <span>Поиск</span>
-                </button>
-            </div>
+            <form action="/search" method="post">
+                <div class="search">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <#if lastSearch??>
+                        <input type="text" name="searchName" class="input input-search" value="${lastSearch}"/>
+                    <#else>
+                        <input type="text" name="searchName" class="input input-search" placeholder=""/>
+                    </#if>
+                    <input type="submit" class="button" value="Поиск">
+                </div>
+            </form>
             <form action="/account">
                 <button class="button button-primary" name="">
                     <img class="button-icon" src="/static/person.svg" alt="person"/>

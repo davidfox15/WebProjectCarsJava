@@ -11,6 +11,7 @@ import tubryansk.lisitsyn.cars.entity.*;
 import tubryansk.lisitsyn.cars.repository.CarRepo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -62,7 +63,8 @@ public class MainController {
             @RequestParam(name = "engineHPmax", required = false) Integer engineHPmax,
             @RequestParam(name = "color", required = false) String color
     ) {
-        if (yearMax == null && yearMin == null && !isALL && !isBACK && !isDIESEL && !isFRONT && !isHUBRID && !isPETROL && engineHPmax == null && engineHPmin == null && color.isEmpty()) return "redirect:/catalog";
+        if (yearMax == null && yearMin == null && !isALL && !isBACK && !isDIESEL && !isFRONT && !isHUBRID && !isPETROL && engineHPmax == null && engineHPmin == null && color.isEmpty())
+            return "redirect:/catalog";
         //Год выпуска
         Set<Car> filterCars = new HashSet<>(Collections.emptySet());
         if (yearMin != null) {
@@ -104,14 +106,27 @@ public class MainController {
         return "catalog";
     }
 
-//    @PostMapping("/search")
-//    public String hello(Model model, @RequestParam(defaultValue = "") String searchName) {
+    @PostMapping("/search")
+    public String hello(Model model, @RequestParam(defaultValue = "") String searchName) {
 //        List<List<String>> persons = repositoryService.getRepository();
 //        List<List<String>> filterList = persons.stream()
 //                .filter(p -> p.get(0).contains(searchName))
 //                .collect(Collectors.toList());
-//        model.addAttribute("persons", filterList);
-//        model.addAttribute("lastSearch", searchName);
-//        return "persons";
-//    }
+        List<Car> cars = carRepo.findAll();
+        Set<Car> filterBrand = cars.stream().filter(c -> c.getBrand().toString().toLowerCase().contains(searchName.toLowerCase())).collect(Collectors.toSet());
+        Set<Car> filterModel = cars.stream().filter(c -> c.getModel().toLowerCase().contains(searchName.toLowerCase())).collect(Collectors.toSet());
+
+        List<Car> filterCars = new ArrayList<>(Collections.emptyList());
+        filterCars.addAll(filterBrand);
+        filterCars.addAll(filterModel);
+
+        model.addAttribute("carEngineTypes", Arrays.asList(CarEngineType.values()));
+        model.addAttribute("carDrives", Arrays.asList(CarDrive.values()));
+        if(!searchName.isEmpty())
+            model.addAttribute("cars", filterCars);
+        else
+            model.addAttribute("cars",cars);
+        model.addAttribute("lastSearch", searchName);
+        return "catalog";
+    }
 }
