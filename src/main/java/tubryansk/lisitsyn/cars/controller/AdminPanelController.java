@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 @Controller
@@ -88,7 +89,7 @@ public class AdminPanelController {
                 CarBody.valueOf(body),
                 carModel,
                 new Date().toString(),
-                color
+                color.toLowerCase()
         );
 
         if (comment == null) {

@@ -109,6 +109,30 @@ body {
   margin-bottom: 20px;
 }
 
+/* Filter */
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(0, 166, 255, 0.3);
+}
+.filter-params {
+  display: flex;
+}
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2px 5px;
+}
+.filter .btn {
+  width: 50%;
+  background: rgba(0, 166, 255, 1);
+  margin: 10px;
+}
+
 /* Catalog */
 .cards {
   display: flex;
