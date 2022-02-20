@@ -206,7 +206,14 @@ body {
 .car-list span {
   margin-right: 10px;
 }
-
+.add-btn {
+  color: #000000;
+  font-size: 18px;
+  text-decoration: none;
+}
+.h1-catalog {
+  text-align: center;
+}
 /*User Panel*/
 .ap-catalog-img {
   width: 100px;
