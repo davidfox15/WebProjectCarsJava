@@ -108,10 +108,6 @@ public class MainController {
 
     @PostMapping("/search")
     public String hello(Model model, @RequestParam(defaultValue = "") String searchName) {
-//        List<List<String>> persons = repositoryService.getRepository();
-//        List<List<String>> filterList = persons.stream()
-//                .filter(p -> p.get(0).contains(searchName))
-//                .collect(Collectors.toList());
         List<Car> cars = carRepo.findAll();
         Set<Car> filterBrand = cars.stream().filter(c -> c.getBrand().toString().toLowerCase().contains(searchName.toLowerCase())).collect(Collectors.toSet());
         Set<Car> filterModel = cars.stream().filter(c -> c.getModel().toLowerCase().contains(searchName.toLowerCase())).collect(Collectors.toSet());

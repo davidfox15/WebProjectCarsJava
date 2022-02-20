@@ -30,7 +30,7 @@ public class UserController {
             return "registration";
         }
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
+        user.setRoles(Collections.singleton(Role.ADMIN));
         userRepo.save(user);
         return "redirect:/login";
     }
@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping("/account")
     public String account(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("user", user);
-        boolean isAdmin = user.getRoles().contains(Role.USER);
+        boolean isAdmin = user.getRoles().contains(Role.ADMIN);
         model.addAttribute("isAdmin",isAdmin);
         return "account";
     }

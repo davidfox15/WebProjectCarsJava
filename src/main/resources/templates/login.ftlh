@@ -5,8 +5,10 @@
     <@c.header/>
     <@c.menu/>
     <div class="container">
-        <h1>Login</h1>
-        <@l.login path="/login"/>
-        <a href="/registration">Registration</a>
+        <div class="user-form">
+            <h1>Login</h1>
+            <@l.login/>
+            <a href="/registration">Registration</a>
+        </div>
     </div>
 </@c.page>

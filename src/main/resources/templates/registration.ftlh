@@ -4,7 +4,10 @@
 <@c.page title="Login">
     <@c.header/>
     <@c.menu/>
-
-    <h1>Login</h1>
-    <@l.login path="/registration"/>
+    <div class="container">
+        <div class="user-form">
+            <h1>Registration</h1>
+            <@l.registration/>
+        </div>
+    </div>
 </@c.page>

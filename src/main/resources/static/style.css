@@ -207,7 +207,23 @@ body {
   margin-right: 10px;
 }
 
-/*Admin Panel*/
+/*User Panel*/
 .ap-catalog-img {
   width: 100px;
+}
+.account-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Login*/
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-form * {
+  margin-bottom: 10px;
 }

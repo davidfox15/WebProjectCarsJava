@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import tubryansk.lisitsyn.cars.entity.Role;
 import tubryansk.lisitsyn.cars.service.UserService;
 
 
@@ -19,17 +20,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/adminpanel/**","/account/**").authenticated()
+                .antMatchers("/account/**").authenticated()
+                .antMatchers("/adminpanel/**").hasRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().permitAll();
-//                .antMatchers("/", "/login", "/registration", "/static/**", "/about").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().loginPage("/login").permitAll()
-//                .and()
-//                .logout().permitAll();
     }
 
     @Override
